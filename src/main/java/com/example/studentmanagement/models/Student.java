@@ -1,7 +1,10 @@
 package com.example.studentmanagement.models;
 
 import jakarta.persistence.*;
-import java.util.UUID;
+
+import java.util.ArrayList;
+import java.util.List;
+import com.example.studentmanagement.models.Enrollment;
 
 @Entity
 @Table(name = "students", uniqueConstraints = {
@@ -25,13 +28,9 @@ public class Student {
     @Column(nullable = false)
     private String address;
 
-    @Column(nullable = false)
-    private String password;
 
-    // Default constructor
-    public Student() {
-        this.password = UUID.randomUUID().toString().substring(0, 8); // Generate random 8-character password
-    }
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Enrollment> enrollments = new ArrayList<>();
 
     // Getters and Setters
     public Long getId() { return id; }
@@ -49,6 +48,4 @@ public class Student {
     public String getAddress() { return address; }
     public void setAddress(String address) { this.address = address; }
 
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
 }

@@ -1,0 +1,79 @@
+<div class="container mt-5">
+  <div class="card shadow-sm p-4">
+    <h2 class="mb-4 text-center">Edit Subject</h2>
+    <form
+      th:action="@{/admin/subjects/edit/{id}(id=${subject.id})}"
+      method="post"
+    >
+      <div class="mb-3">
+        <label for="name" class="form-label fw-bold">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          class="form-control"
+          th:value="${subject.name}"
+          placeholder="Enter subject name"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label fw-bold">Description</label>
+        <textarea
+          id="description"
+          name="description"
+          class="form-control"
+          rows="4"
+          placeholder="Enter subject description"
+          th:text="${subject.description}"
+          required
+        ></textarea>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-success">
+          <i class="fas fa-save"></i> Update Subject
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+  body {
+    background-color: #f8f9fa;
+  }
+
+  .card {
+    max-width: 600px;
+    margin: 50px auto;
+    border-radius: 10px;
+  }
+
+  h2 {
+    font-weight: bold;
+    color: #343a40;
+  }
+
+  .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+
+  .form-label {
+    font-weight: bold;
+  }
+
+  .form-control {
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .shadow-sm {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+</style>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>

@@ -30,28 +30,19 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        // http
-        //     .csrf(csrf -> csrf.disable()) // Disable CSRF protection for testing
-        //     .authorizeHttpRequests(auth -> auth
-        //         .anyRequest().permitAll() // Allow access to all endpoints without authentication
-        //     )
-        //     .formLogin(form -> form.disable()) // Disable the login form
-        //     .logout(logout -> logout.disable());
         http
         .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/login", "/register", "/css/**", "/js/**").permitAll() // Allow public access
-                .requestMatchers("/student/register").hasRole("ADMIN") // Only admins can access this
-            .requestMatchers("/student/**").hasRole("STUDENT") // Only students can access this
+                .requestMatchers("/login", "/css/**", "/js/**").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
-                .loginPage("/login") // Custom login page
-                .defaultSuccessUrl("/home", true) // Redirect after login
+                .loginPage("/login") 
+                .defaultSuccessUrl("/home", true) 
                 .permitAll()
             )
             .logout(logout -> logout
-                .logoutSuccessUrl("/login") // Redirect after logout
+                .logoutSuccessUrl("/login") 
                 .permitAll()
             );
 

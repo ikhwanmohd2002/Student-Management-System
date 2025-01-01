@@ -39,7 +39,8 @@ public class AdminController {
 
 
     @GetMapping("/home")
-    public String home() {
-        return "home";
+    public String home(Model model) {
+        model.addAttribute("content", "home"); // Specify content fragment
+        return "layout"; // Render the layout template
     }
 }
