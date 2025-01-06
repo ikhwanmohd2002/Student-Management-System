@@ -1,6 +1,13 @@
 package com.example.studentmanagement.models;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "results")
@@ -15,16 +22,15 @@ public class Result {
     private Enrollment enrollment;
 
     @Column(nullable = false)
-    private String title; // New field for the title of the result
+    private String title; 
 
     @Column(nullable = false)
-    private int marks; // Marks obtained by the student
+    private int marks; 
 
     @Column(nullable = false)
-    private String grade; // Example: A, B, C, etc.
+    private String grade; 
 
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }

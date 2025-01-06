@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface ResultRepository extends JpaRepository<Result, Long> {
 
-    // Find all results for a specific enrollment
     List<Result> findByEnrollmentId(Long enrollmentId);
 }
 

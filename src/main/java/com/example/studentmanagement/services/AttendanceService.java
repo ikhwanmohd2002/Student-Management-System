@@ -32,15 +32,14 @@ public class AttendanceService {
         return attendanceRepository.findByDate(date);
     }
 
-        // Bulk Attendance Marking
+
         public void markBulkAttendance(Long subjectId, LocalDate date) {
             List<Enrollment> enrollments = enrollmentRepository.findBySubjectId(subjectId);
     
             for (Enrollment enrollment : enrollments) {
-                // Check if attendance already exists
+
                 Attendance existing = attendanceRepository.findByEnrollmentIdAndDate(enrollment.getId(), date);
                 if (existing == null) {
-                    // Create new attendance record
                     Attendance attendance = new Attendance();
                     attendance.setEnrollment(enrollment);
                     attendance.setDate(date);

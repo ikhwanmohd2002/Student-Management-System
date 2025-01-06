@@ -21,15 +21,14 @@ public class Attendance {
 
     @ManyToOne
     @JoinColumn(name = "enrollment_id", nullable = false)
-    private Enrollment enrollment; // Reference to Enrollment entity
+    private Enrollment enrollment;
 
     @Column(nullable = false)
-    private LocalDate date; // Attendance date
+    private LocalDate date; 
 
     @Column(nullable = false)
     private String status; // e.g., "Present", "Absent"
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }

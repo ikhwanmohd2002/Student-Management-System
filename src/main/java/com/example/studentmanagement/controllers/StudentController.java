@@ -1,18 +1,19 @@
 package com.example.studentmanagement.controllers;
 
-import com.example.studentmanagement.models.Student;
-import com.example.studentmanagement.services.StudentService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.List;
+import com.example.studentmanagement.models.Student;
+import com.example.studentmanagement.services.StudentService;
 
 @Controller
 @RequestMapping("/admin/students")
@@ -23,11 +24,10 @@ public class StudentController {
 
     @GetMapping
     public String manageStudents(Model model) {
-    // Retrieve all students from the database
     List<Student> students = studentService.getAllStudents();
     model.addAttribute("content", "manage_students");
-    model.addAttribute("students", students); // Pass the list of students to the view
-    return "layout"; // Use the common layout
+    model.addAttribute("students", students); 
+    return "layout"; 
     }
 
 
